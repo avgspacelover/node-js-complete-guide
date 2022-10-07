@@ -11,8 +11,12 @@ app.use((req, res, next)=> {
 app.use((req, res, next)=> {
     console.log("second")
 
+    res.send()
+
 })
 
-const server = http.createServer(app);
+//const server = http.createServer(app);
 
-server.listen(3000);
+//server.listen(3000);
+
+app.listen(3000)
