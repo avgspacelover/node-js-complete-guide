@@ -12,9 +12,9 @@ app.use(adminRoutes);
 app.use(shopRoutes);
 
 app.use('/',(req, res, next)=> {
-    console.log("end")
+    console.log("error handling default route")
 
-    res.send("<html>hey</html>")
+    res.status(404).send("<html>hey, page not found bro! </html>")
 
 
 })
