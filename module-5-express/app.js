@@ -18,7 +18,7 @@ app.use('/extra-route',(req, res, next)=> {
 
 })
 
-app.use('/product', (req, res,next)=> {
+app.post('/product', (req, res,next)=> {
     
     console.log(req.body);
     
