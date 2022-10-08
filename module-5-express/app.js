@@ -1,41 +1,24 @@
-const http= require('http');
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 
+const adminRoutes= require('./routes/admin');
+const shopRoutes= require('./routes/shop');
+
 app.use(bodyParser.urlencoded({extended: true}));
 
-// app.use('/',(req, res, next)=> {
-//     console.log("always runs")
-//     next(); // passes control to next middleware
-// })
 
-app.use('/extra-route',(req, res, next)=> {
-
-
-    res.send('<html><form action="/product" method="POST">hey<input type="text" name="title"> <button type="submit">submit</button></form></html>')
-
-})
-
-app.post('/product', (req, res,next)=> {
-    
-    console.log(req.body);
-    
-    res.redirect('/');
-
-})
+app.use(adminRoutes);
+app.use(shopRoutes);
 
 app.use('/',(req, res, next)=> {
     console.log("end")
 
     res.send("<html>hey</html>")
-    next();
+
 
 })
 
-//const server = http.createServer(app);
+app.listen(3000);
 
-//server.listen(3000);
-
-app.listen(3000)
+//get, post etc does an exact pth matching, but not with use
